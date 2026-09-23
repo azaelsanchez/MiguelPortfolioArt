@@ -36,7 +36,7 @@ export async function FeaturedWorks({ projects }: Props) {
       </div>
 
       <div className="mt-4 flex justify-center">
-        <Link href="/work" className={buttonClasses("outline")}>
+        <Link href="/work" className={buttonClasses("solid")}>
           {t("ctaWork")}
         </Link>
       </div>

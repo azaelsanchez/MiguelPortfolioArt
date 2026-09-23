@@ -16,7 +16,7 @@ export default async function NotFound() {
       <h1 className="font-display text-title mt-4">{t("title")}</h1>
       <p className="text-ink-muted mt-4 text-pretty">{t("description")}</p>
       <div className="mt-10 flex justify-center">
-        <Link href="/" className={buttonClasses("outline")}>
+        <Link href="/" className={buttonClasses("solid")}>
           {t("backHome")}
         </Link>
       </div>

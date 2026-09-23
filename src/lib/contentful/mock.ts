@@ -106,13 +106,28 @@ export const RAW_CATEGORIES: RawCategory[] = [
 ];
 
 const PENDING_DESCRIPTION: Localized<string[]> = {
-  es: [
-    "TODO(azael): descripción pendiente de migrar desde Wix o de redactar con Miguel.",
-  ],
-  en: [
-    "TODO(azael): description pending migration from Wix or to be written with Miguel.",
-  ],
+  es: ["TODO(azael): descripción pendiente de redactar con Miguel."],
+  en: ["TODO(azael): description pending — to be written with Miguel."],
 };
+
+/**
+ * Fotos reales de la obra, migradas de Wix (`public/work/`). Las URLs
+ * originales eran `static.wixstatic.com/media/{hash}~mv2.jpg` — se
+ * descargaron con `curl` sin el sufijo `/v1/fill/...` (esa parte es solo
+ * el recorte que generaba Wix para cada tamaño de pantalla).
+ *
+ * TODO(azael): el alt/técnica/categoría de cada pieza se ha inferido
+ * mirando la imagen (no hay texto curatorial en las páginas de Wix
+ * originales); conviene que Miguel los revise antes de publicar.
+ */
+function work(
+  name: string,
+  width: number,
+  height: number,
+  alt: Localized<string>,
+): RawImage {
+  return { url: `/work/${name}.jpg`, alt, width, height };
+}
 
 export const RAW_PROJECTS: RawProject[] = [
   {
@@ -120,14 +135,19 @@ export const RAW_PROJECTS: RawProject[] = [
     slug: "blackout",
     title: { es: "Blackout", en: "Blackout" },
     year: 2020,
-    categorySlugs: ["animacion"],
-    coverImage: placeholder("blackout", 1600, 900, {
-      es: "Fotograma del cortometraje de animación Blackout",
-      en: "Still from the animated short film Blackout",
+    categorySlugs: ["ilustracion"],
+    coverImage: work("blackout", 1588, 2248, {
+      es: "Ilustración Blackout: dos ojos y un signo de interrogación sobre fondo negro",
+      en: "Blackout illustration: two eyes and a question mark on black",
     }),
-    gallery: [],
+    gallery: [
+      work("blackout-2", 1243, 1341, {
+        es: "Camiseta con la ilustración de Blackout",
+        en: "T-shirt with the Blackout illustration",
+      }),
+    ],
     description: PENDING_DESCRIPTION,
-    technique: { es: "Animación 2D", en: "2D animation" },
+    technique: { es: "Ilustración digital", en: "Digital illustration" },
     featured: true,
     order: 1,
   },
@@ -136,14 +156,14 @@ export const RAW_PROJECTS: RawProject[] = [
     slug: "cest-tres-excitant",
     title: { es: "C’est très excitant!", en: "C’est très excitant!" },
     year: 2019,
-    categorySlugs: ["ilustracion"],
-    coverImage: placeholder("cest-tres-excitant", 1200, 1500, {
-      es: "Ilustración de la serie C’est très excitant!",
-      en: "Illustration from the series C’est très excitant!",
+    categorySlugs: ["pintura"],
+    coverImage: work("cest-tres-excitant", 1644, 2244, {
+      es: "Pintura homenaje al cartel del Moulin Rouge, C’est très excitant!",
+      en: "Painting paying homage to the Moulin Rouge poster, C’est très excitant!",
     }),
     gallery: [],
     description: PENDING_DESCRIPTION,
-    technique: { es: "Ilustración digital", en: "Digital illustration" },
+    technique: { es: "Pintura", en: "Painting" },
     featured: true,
     order: 2,
   },
@@ -153,9 +173,9 @@ export const RAW_PROJECTS: RawProject[] = [
     title: { es: "Pequeñas cosas", en: "Little things" },
     year: 2018,
     categorySlugs: ["ilustracion"],
-    coverImage: placeholder("pequenas-cosas", 1400, 1400, {
-      es: "Ilustración de la serie Pequeñas cosas",
-      en: "Illustration from the series Little things",
+    coverImage: work("pequenas-cosas", 1684, 2236, {
+      es: "Ilustración sobre fotografía, de la serie Pequeñas cosas",
+      en: "Illustration over photograph, from the series Little things",
     }),
     gallery: [],
     description: PENDING_DESCRIPTION,
@@ -171,14 +191,19 @@ export const RAW_PROJECTS: RawProject[] = [
       en: "Atléticos to the new Metropolitano",
     },
     year: 2017,
-    categorySlugs: ["ilustracion", "diseno-grafico"],
-    coverImage: placeholder("atleticos-al-nuevo-metropolitano", 1600, 1067, {
-      es: "Ilustración Atléticos al nuevo Metropolitano",
-      en: "Illustration Atléticos to the new Metropolitano",
+    categorySlugs: ["pintura"],
+    coverImage: work("atleticos-al-nuevo-metropolitano", 960, 363, {
+      es: "Pintura de aficionados camino del estadio Metropolitano",
+      en: "Painting of fans on their way to the Metropolitano stadium",
     }),
-    gallery: [],
+    gallery: [
+      work("atleticos-al-nuevo-metropolitano-2", 479, 363, {
+        es: "Detalle de Atléticos al nuevo Metropolitano",
+        en: "Detail of Atléticos to the new Metropolitano",
+      }),
+    ],
     description: PENDING_DESCRIPTION,
-    technique: { es: "Ilustración digital", en: "Digital illustration" },
+    technique: { es: "Pintura", en: "Painting" },
     featured: true,
     order: 4,
   },
@@ -187,15 +212,19 @@ export const RAW_PROJECTS: RawProject[] = [
     slug: "alices-spaces",
     title: { es: "Alice’s spaces I y II", en: "Alice’s spaces I and II" },
     year: 2016,
-    categorySlugs: ["pintura"],
-    coverImage: placeholder("alices-spaces", 1200, 1600, {
-      es: "Obra plástica Alice’s spaces",
-      en: "Studio work Alice’s spaces",
+    categorySlugs: ["diseno-grafico"],
+    coverImage: work("alices-spaces", 3543, 2480, {
+      es: "Tipografía generativa Alice’s spaces II, con forma de conejo",
+      en: "Generative typography Alice’s spaces II, shaped like a rabbit",
     }),
-    gallery: [],
+    gallery: [
+      work("alices-spaces-2", 1122, 794, {
+        es: "Tipografía generativa Alice’s spaces I",
+        en: "Generative typography Alice’s spaces I",
+      }),
+    ],
     description: PENDING_DESCRIPTION,
-    technique: { es: "Óleo sobre lienzo", en: "Oil on canvas" },
-    dimensions: "100 × 130 cm",
+    technique: { es: "Tipografía generativa", en: "Generative typography" },
     featured: true,
     order: 5,
   },
@@ -204,30 +233,33 @@ export const RAW_PROJECTS: RawProject[] = [
     slug: "tempus-fugit",
     title: { es: "Tempus fugit", en: "Tempus fugit" },
     year: 2016,
-    categorySlugs: ["pintura"],
-    coverImage: placeholder("tempus-fugit", 1500, 1000, {
-      es: "Obra plástica Tempus fugit",
-      en: "Studio work Tempus fugit",
+    categorySlugs: ["fotografia"],
+    coverImage: work("tempus-fugit", 3888, 2592, {
+      es: "Fotografía de larga exposición en la Puerta del Sol, Madrid",
+      en: "Long-exposure photograph at Puerta del Sol, Madrid",
     }),
     gallery: [],
     description: PENDING_DESCRIPTION,
-    technique: { es: "Técnica mixta sobre tabla", en: "Mixed media on board" },
+    technique: {
+      es: "Fotografía de larga exposición",
+      en: "Long-exposure photography",
+    },
     featured: true,
     order: 6,
   },
   {
     id: "prj-el-sueno-de-la-razon",
     slug: "el-sueno-de-la-razon",
-    title: { es: "El sueño de la razón", en: "The sleep of reason" },
+    title: { es: "El sueño de la razón", en: "The dream of reason" },
     year: 2015,
-    categorySlugs: ["pintura", "ilustracion"],
-    coverImage: placeholder("el-sueno-de-la-razon", 1200, 1500, {
-      es: "Obra El sueño de la razón",
-      en: "Artwork The sleep of reason",
+    categorySlugs: ["pintura"],
+    coverImage: work("el-sueno-de-la-razon", 1362, 1773, {
+      es: "Grabado El sueño de la razón produce monstruos",
+      en: "Etching The dream of reason produces monsters",
     }),
     gallery: [],
     description: PENDING_DESCRIPTION,
-    technique: { es: "Grafito y tinta", en: "Graphite and ink" },
+    technique: { es: "Grabado", en: "Etching" },
     featured: true,
     order: 7,
   },
@@ -236,14 +268,17 @@ export const RAW_PROJECTS: RawProject[] = [
     slug: "do-not-stop",
     title: { es: "DO NOT STOP", en: "DO NOT STOP" },
     year: 2015,
-    categorySlugs: ["animacion"],
-    coverImage: placeholder("do-not-stop", 1600, 900, {
-      es: "Fotograma de la pieza animada DO NOT STOP",
-      en: "Still from the animated piece DO NOT STOP",
+    categorySlugs: ["ilustracion"],
+    coverImage: work("do-not-stop", 1984, 1417, {
+      es: "Personajes en pixel art compuestos sobre una fotografía, DO NOT STOP",
+      en: "Pixel-art characters composited onto a photograph, DO NOT STOP",
     }),
     gallery: [],
     description: PENDING_DESCRIPTION,
-    technique: { es: "Motion graphics", en: "Motion graphics" },
+    technique: {
+      es: "Ilustración digital y fotomontaje",
+      en: "Digital illustration and photomontage",
+    },
     featured: true,
     order: 8,
   },
@@ -252,12 +287,14 @@ export const RAW_PROJECTS: RawProject[] = [
     slug: "draballoon",
     title: { es: "Draballoon", en: "Draballoon" },
     year: 2014,
-    categorySlugs: ["animacion", "ilustracion"],
-    coverImage: placeholder("draballoon", 1600, 1000, {
-      es: "Personaje del proyecto Draballoon",
-      en: "Character from the Draballoon project",
+    categorySlugs: ["animacion"],
+    coverImage: work("draballoon", 640, 480, {
+      es: "Miniatura del vídeo del proyecto Draballoon",
+      en: "Thumbnail of the Draballoon project video",
     }),
     gallery: [],
+    // Vídeo real, migrado desde el iframe de YouTube embebido en Wix.
+    videoUrl: "https://www.youtube.com/watch?v=EgFnD853x04",
     description: PENDING_DESCRIPTION,
     technique: {
       es: "Concept art y animación",
@@ -269,16 +306,19 @@ export const RAW_PROJECTS: RawProject[] = [
   {
     id: "prj-cubiertos-fusion",
     slug: "cubiertos-fusion",
-    title: { es: "Cubiertos fusión", en: "Fusion cutlery" },
+    title: { es: "Cubiertos fusión", en: "Fusion Covers" },
     year: 2015,
     categorySlugs: ["diseno-grafico"],
-    coverImage: placeholder("cubiertos-fusion", 1400, 1050, {
-      es: "Diseño de producto Cubiertos fusión",
-      en: "Product design Fusion cutlery",
+    coverImage: work("cubiertos-fusion", 2816, 2116, {
+      es: "Render 3D de una cubertería, proyecto Cubiertos fusión",
+      en: "3D render of a cutlery set, Fusion Covers project",
     }),
     gallery: [],
     description: PENDING_DESCRIPTION,
-    technique: { es: "Diseño de producto", en: "Product design" },
+    technique: {
+      es: "Diseño de producto · render 3D",
+      en: "Product design · 3D render",
+    },
     featured: false,
     order: 10,
   },
@@ -288,9 +328,9 @@ export const RAW_PROJECTS: RawProject[] = [
     title: { es: "Hollow, la cerveza", en: "Hollow, the beer" },
     year: 2017,
     categorySlugs: ["diseno-grafico"],
-    coverImage: placeholder("hollow-la-cerveza", 1200, 1600, {
-      es: "Identidad y packaging de la cerveza Hollow",
-      en: "Branding and packaging for Hollow beer",
+    coverImage: work("hollow-la-cerveza", 3056, 2008, {
+      es: "Packaging de la cerveza Hollow, con tema de Sleepy Hollow",
+      en: "Packaging for Hollow beer, Sleepy Hollow themed",
     }),
     gallery: [],
     description: PENDING_DESCRIPTION,
@@ -307,9 +347,9 @@ export const RAW_PROJECTS: RawProject[] = [
     },
     year: 2021,
     categorySlugs: ["fotografia"],
-    coverImage: placeholder("una-pequena-parte-del-mundo", 1600, 1067, {
-      es: "Fotografía de la serie Una pequeña parte del mundo",
-      en: "Photograph from the series A small part of the world",
+    coverImage: work("una-pequena-parte-del-mundo", 4724, 3543, {
+      es: "Atardecer sobre una ciudad, de la serie Una pequeña parte del mundo",
+      en: "Sunset over a town, from the series A small part of the world",
     }),
     gallery: [],
     description: PENDING_DESCRIPTION,

@@ -66,7 +66,7 @@ export function Bio({ portrait, bioShort, bioLong, cvFileUrl }: Props) {
           <a
             href={cvFileUrl}
             download
-            className={buttonClasses("outline", "ml-auto")}
+            className={buttonClasses("solid", "ml-auto")}
           >
             {t("downloadCv")}
           </a>

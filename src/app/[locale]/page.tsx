@@ -52,7 +52,7 @@ export default async function HomePage() {
             <Link href="/work" className={buttonClasses("solid")}>
               {t("ctaWork")}
             </Link>
-            <Link href="/contact" className={buttonClasses("outline")}>
+            <Link href="/contact" className={buttonClasses("solid")}>
               {tNav("contact")}
             </Link>
           </div>

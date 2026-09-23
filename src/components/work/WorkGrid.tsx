@@ -50,7 +50,14 @@ function WorkGridPage({ projects, initialCount }: Props) {
 
   return (
     <>
-      <div className="mt-12 columns-1 gap-8 sm:columns-2 lg:columns-3">
+      {/*
+        Rejilla uniforme, no masonry: con fotos reales de proporciones tan
+        distintas (algunas panorámicas, otras verticales), dejar que cada
+        una decida su propia altura se veía como un collage desordenado en
+        vez de una pared de galería. El recorte a 4:5 (`WorkCard`'s
+        `aspect`) es el mismo trato en cada tarjeta.
+      */}
+      <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3">
         <AnimatePresence initial={false}>
           {visible.map((project, index) => (
             <motion.div
@@ -61,7 +68,12 @@ function WorkGridPage({ projects, initialCount }: Props) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              <WorkCard project={project} priority={index < 3} />
+              <WorkCard
+                project={project}
+                priority={index < 3}
+                aspect="aspect-[4/5]"
+                sizes="(min-width: 768px) 33vw, 50vw"
+              />
             </motion.div>
           ))}
         </AnimatePresence>

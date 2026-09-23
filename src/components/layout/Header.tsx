@@ -9,13 +9,15 @@ import { cn } from "@/lib/cn";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { MobileMenu } from "./MobileMenu";
 
-/** Umbral a partir del cual el header empieza a ocultarse al bajar. */
-const HIDE_AFTER = 120;
-
+/**
+ * Fija y siempre visible: con Home funcionando como una mini-SPA (secciones
+ * con ancla para Obra y Contacto), esconder el menú al bajar obligaría a
+ * subir para volver a navegar. Solo cambia de fondo — transparente arriba
+ * del todo, papel + blur al bajar — para no competir con el hero.
+ */
 export function Header() {
   const t = useTranslations("nav");
   const pathname = usePathname();
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -23,13 +25,8 @@ export function Header() {
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   useEffect(() => {
-    let lastY = window.scrollY;
-
     function onScroll() {
-      const currentY = window.scrollY;
-      setScrolled(currentY > 8);
-      setHidden(currentY > HIDE_AFTER && currentY > lastY);
-      lastY = currentY;
+      setScrolled(window.scrollY > 8);
     }
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -42,8 +39,7 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color] duration-500 ease-(--ease-out-soft)",
-          hidden && !menuOpen ? "-translate-y-full" : "translate-y-0",
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-500 ease-(--ease-out-soft)",
           scrolled && !menuOpen
             ? "border-line bg-canvas/85 border-b backdrop-blur-md"
             : "border-b border-transparent",
@@ -70,8 +66,8 @@ export function Header() {
                       className={cn(
                         "text-sm transition-colors duration-300 ease-(--ease-out-soft)",
                         pathname.startsWith(item.href)
-                          ? "text-ink"
-                          : "text-ink-muted hover:text-ink",
+                          ? "text-accent"
+                          : "text-ink-muted hover:text-accent",
                       )}
                     >
                       {t(item.key)}

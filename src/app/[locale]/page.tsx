@@ -7,6 +7,7 @@ import { buttonClasses } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { CategoryFilter } from "@/components/work/CategoryFilter";
 import { WorkGrid } from "@/components/work/WorkGrid";
+import { ContactSection } from "@/components/contact/ContactSection";
 import {
   getCategories,
   getProjects,
@@ -63,7 +64,7 @@ export default async function HomePage() {
             <Link href="/#work" className={buttonClasses("solid")}>
               {t("ctaWork")}
             </Link>
-            <Link href="/contact" className={buttonClasses("solid")}>
+            <Link href="/#contact" className={buttonClasses("solid")}>
               {tNav("contact")}
             </Link>
           </div>
@@ -91,6 +92,8 @@ export default async function HomePage() {
           <WorkGrid projects={projects} initialCount={INITIAL_VISIBLE} />
         </Suspense>
       </Container>
+
+      <ContactSection settings={settings} />
     </>
   );
 }

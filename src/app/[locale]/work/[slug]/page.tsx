@@ -72,7 +72,7 @@ export default async function ProjectPage(
       <JsonLd data={creativeWorkJsonLd} />
       <Container as="article" width="wide" className="py-section">
         <Link
-          href="/work"
+          href="/#work"
           className="eyebrow hover:text-ink inline-block transition-colors duration-300 ease-(--ease-out-soft)"
         >
           ← {t("backToWork")}

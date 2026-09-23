@@ -44,8 +44,8 @@ export function CategoryFilter({ categories }: Props) {
         className={cn(
           "shrink-0 rounded-full border px-4 py-2 text-sm transition-colors duration-300 ease-(--ease-out-soft)",
           !active
-            ? "border-ink bg-ink text-canvas"
-            : "border-line-strong text-ink-muted hover:border-ink hover:text-ink",
+            ? "border-accent bg-accent text-canvas"
+            : "border-line-strong text-ink-muted hover:border-accent hover:text-accent",
         )}
       >
         {t("allCategories")}
@@ -61,8 +61,8 @@ export function CategoryFilter({ categories }: Props) {
             className={cn(
               "shrink-0 rounded-full border px-4 py-2 text-sm transition-colors duration-300 ease-(--ease-out-soft)",
               isActive
-                ? "border-ink bg-ink text-canvas"
-                : "border-line-strong text-ink-muted hover:border-ink hover:text-ink",
+                ? "border-accent bg-accent text-canvas"
+                : "border-line-strong text-ink-muted hover:border-accent hover:text-accent",
             )}
           >
             {category.name}

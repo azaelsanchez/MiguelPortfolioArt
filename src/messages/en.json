@@ -73,6 +73,12 @@
     "sending": "Sending…",
     "success": "Message sent. I'll get back to you as soon as I can.",
     "error": "The message could not be sent. Please try again.",
+    "errorInvalid": "Check the fields: something's missing or the email isn't valid.",
+    "errorRateLimited": "Too many attempts in a row. Try again in a few minutes.",
+    "errorCaptcha": "We couldn't verify you're not a robot. Please try again.",
+    "nameRequired": "Enter your name.",
+    "emailInvalid": "Enter a valid email.",
+    "messageTooShort": "Tell me a bit more (10 characters minimum).",
     "followMe": "Follow me"
   },
   "notFound": {

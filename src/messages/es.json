@@ -73,6 +73,12 @@
     "sending": "Enviando…",
     "success": "Mensaje enviado. Te responderé lo antes posible.",
     "error": "No se ha podido enviar el mensaje. Inténtalo de nuevo.",
+    "errorInvalid": "Revisa los campos: falta información o el email no es válido.",
+    "errorRateLimited": "Demasiados intentos seguidos. Prueba de nuevo en unos minutos.",
+    "errorCaptcha": "No se ha podido verificar que no eres un robot. Inténtalo de nuevo.",
+    "nameRequired": "Escribe tu nombre.",
+    "emailInvalid": "Escribe un email válido.",
+    "messageTooShort": "Cuéntame un poco más (mínimo 10 caracteres).",
     "followMe": "Sígueme"
   },
   "notFound": {

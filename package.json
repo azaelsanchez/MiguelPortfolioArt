@@ -10,24 +10,38 @@
     "lint:fix": "eslint --fix",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "contentful:migrate": "contentful-migration --space-id \"$CONTENTFUL_SPACE_ID\" --environment-id \"${CONTENTFUL_ENVIRONMENT:-master}\" --access-token \"$CONTENTFUL_MANAGEMENT_TOKEN\" scripts/contentful/migrate.js",
+    "contentful:seed": "tsx scripts/contentful/seed.ts"
   },
   "dependencies": {
+    "@contentful/rich-text-plain-text-renderer": "^17.2.1",
+    "@contentful/rich-text-types": "^17.2.7",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
+    "contentful": "^11.12.10",
+    "lenis": "^1.3.26",
+    "motion": "^13.4.0",
     "next": "16.3.5",
     "next-intl": "^4.14.6",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "resend": "^6.28.1",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "contentful-management": "^12.17.0",
+    "contentful-migration": "^5.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
     "prettier": "^3.9.8",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   },
   "packageManager": "pnpm@12.5.1"

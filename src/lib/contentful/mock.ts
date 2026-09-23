@@ -21,23 +21,23 @@ import type {
   Skill,
 } from "./types";
 
-type Localized<T> = Record<Locale, T>;
+export type Localized<T> = Record<Locale, T>;
 
-type RawImage = {
+export type RawImage = {
   url: string;
   alt: Localized<string>;
   width: number;
   height: number;
 };
 
-type RawCategory = {
+export type RawCategory = {
   id: string;
   slug: string;
   name: Localized<string>;
   order: number;
 };
 
-type RawProject = {
+export type RawProject = {
   id: string;
   slug: string;
   title: Localized<string>;
@@ -72,7 +72,7 @@ function placeholder(
   return { url: `/mock/${name}.png`, alt, width, height };
 }
 
-const RAW_CATEGORIES: RawCategory[] = [
+export const RAW_CATEGORIES: RawCategory[] = [
   {
     id: "cat-animacion",
     slug: "animacion",
@@ -114,7 +114,7 @@ const PENDING_DESCRIPTION: Localized<string[]> = {
   ],
 };
 
-const RAW_PROJECTS: RawProject[] = [
+export const RAW_PROJECTS: RawProject[] = [
   {
     id: "prj-blackout",
     slug: "blackout",
@@ -319,9 +319,11 @@ const RAW_PROJECTS: RawProject[] = [
   },
 ];
 
-type RawExhibition = Omit<Exhibition, "title"> & { title: Localized<string> };
+export type RawExhibition = Omit<Exhibition, "title"> & {
+  title: Localized<string>;
+};
 
-const RAW_EXHIBITIONS: RawExhibition[] = [
+export const RAW_EXHIBITIONS: RawExhibition[] = [
   {
     id: "exh-2024-agraba",
     year: 2024,
@@ -445,9 +447,11 @@ const RAW_EXHIBITIONS: RawExhibition[] = [
   },
 ];
 
-type RawEducation = Omit<Education, "title"> & { title: Localized<string> };
+export type RawEducation = Omit<Education, "title"> & {
+  title: Localized<string>;
+};
 
-const RAW_EDUCATION: RawEducation[] = [
+export const RAW_EDUCATION: RawEducation[] = [
   {
     id: "edu-doctorado",
     yearStart: 2015,
@@ -494,12 +498,12 @@ const RAW_EDUCATION: RawEducation[] = [
   },
 ];
 
-type RawExperience = Omit<Experience, "role" | "highlights"> & {
+export type RawExperience = Omit<Experience, "role" | "highlights"> & {
   role: Localized<string>;
   highlights: Localized<string[]>;
 };
 
-const RAW_EXPERIENCE: RawExperience[] = [
+export const RAW_EXPERIENCE: RawExperience[] = [
   {
     id: "exp-uem",
     role: { es: "Profesor universitario", en: "University lecturer" },
@@ -594,7 +598,7 @@ const RAW_EXPERIENCE: RawExperience[] = [
   },
 ];
 
-type RawSkill = Omit<Skill, "name"> & { name: Localized<string> };
+export type RawSkill = Omit<Skill, "name"> & { name: Localized<string> };
 
 function specialty(
   id: string,
@@ -609,7 +613,7 @@ function tool(id: string, name: string, order: number): RawSkill {
   return { id, name: { es: name, en: name }, type: "tool", order };
 }
 
-const RAW_SKILLS: RawSkill[] = [
+export const RAW_SKILLS: RawSkill[] = [
   specialty("skl-direccion", "Dirección creativa", "Creative direction", 1),
   specialty(
     "skl-branding",
@@ -682,7 +686,7 @@ const RAW_SKILLS: RawSkill[] = [
   },
 ];
 
-const RAW_SITE_SETTINGS = {
+export const RAW_SITE_SETTINGS = {
   // TODO(azael): sustituir por el reel real cuando Miguel lo facilite.
   heroVideoUrl: undefined as string | undefined,
   heroImage: placeholder("hero", 2400, 1350, {

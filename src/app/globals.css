@@ -18,6 +18,21 @@
   --color-accent: #5c4b78;
   --color-accent-soft: #ece7f2;
 
+  /* Feedback (formulario). Tomados de la propia paleta de manchas: nada de rojo/verde de alarma. */
+  --color-success: #4f7f79;
+  --color-error: #a35b4a;
+
+  /*
+   * Paleta de "manchas" — usada solo por `<PaintWash>` para romper el
+   * blanco plano con tinta muy desaturada, nunca como color de UI.
+   * Deliberadamente apagada: nada de arcoíris saturado, esto es un lienzo
+   * de galería, no un flyer.
+   */
+  --color-wash-violet: #6d5a92;
+  --color-wash-rose: #c08b83;
+  --color-wash-ochre: #c39a52;
+  --color-wash-teal: #4f7f79;
+
   /* Tipografía */
   --font-sans:
     var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
@@ -92,4 +107,19 @@
   letter-spacing: var(--text-eyebrow--letter-spacing);
   text-transform: uppercase;
   color: var(--color-ink-muted);
+}
+
+/*
+ * Deriva muy lenta para las manchas de `<PaintWash>`, como si la tinta
+ * siguiera moviéndose en el agua. `prefers-reduced-motion` ya la anula más
+ * abajo (regla global sobre `animation-duration`).
+ */
+@keyframes wash-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -3%, 0) scale(1.045);
+  }
 }

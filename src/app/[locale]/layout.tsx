@@ -80,7 +80,15 @@ export default async function LocaleLayout({
       lang={locale}
       className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">
+      {/*
+        `suppressHydrationWarning` en `body`: algunas extensiones del
+        navegador (ColorZilla, Grammarly…) inyectan atributos como
+        `cz-shortcut-listen` en cuanto carga la página, antes de que React
+        hidrate. React los ve como un "mismatch" servidor/cliente y avisa en
+        consola, pero no es un bug nuestro ni afecta a nada — solo silencia
+        ese aviso concreto para `body`, no baja al resto del árbol.
+      */}
+      <body className="flex min-h-full flex-col" suppressHydrationWarning>
         <JsonLd data={personJsonLd} />
         <NextIntlClientProvider>
           <MotionProvider>

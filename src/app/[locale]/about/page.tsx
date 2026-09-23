@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
-import { PaintWash, WASH_PRESETS } from "@/components/ui/PaintWash";
 import { Reveal } from "@/components/ui/Reveal";
 import { Bio } from "@/components/about/Bio";
 import { Timeline, type TimelineItem } from "@/components/about/Timeline";
@@ -58,9 +57,7 @@ export default async function AboutPage() {
 
   return (
     <>
-      <Container as="section" width="wide" className="py-section relative">
-        <PaintWash blobs={WASH_PRESETS.whisper} />
-
+      <Container as="section" width="wide" className="py-section">
         <Reveal>
           <h1 className="font-display text-title">{t("title")}</h1>
         </Reveal>

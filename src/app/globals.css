@@ -23,15 +23,16 @@
   --color-error: #a35b4a;
 
   /*
-   * Paleta de "manchas" — usada solo por `<PaintWash>` para romper el
-   * blanco plano con tinta muy desaturada, nunca como color de UI.
-   * Deliberadamente apagada: nada de arcoíris saturado, esto es un lienzo
-   * de galería, no un flyer.
+   * Paleta de "manchas" — usada solo por `<PaintWash>` para llenar el
+   * lienzo de color de fondo, nunca como color de UI (texto, botones…).
+   * Con saturación real — el sitio tiene que leerse como colorido, no
+   * como un apunte de color en una esquina — pero sin llegar al arcoíris
+   * saturado de un flyer: siguen siendo tintas, no colores planos.
    */
-  --color-wash-violet: #6d5a92;
-  --color-wash-rose: #c08b83;
-  --color-wash-ochre: #c39a52;
-  --color-wash-teal: #4f7f79;
+  --color-wash-violet: #6a49a8;
+  --color-wash-rose: #d9705f;
+  --color-wash-ochre: #dc9a2e;
+  --color-wash-teal: #2f8f83;
 
   /* Tipografía */
   --font-sans:

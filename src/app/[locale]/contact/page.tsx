@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
-import { PaintWash, WASH_PRESETS } from "@/components/ui/PaintWash";
 import { Reveal } from "@/components/ui/Reveal";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { toLocale } from "@/lib/i18n/routing";
@@ -42,9 +41,7 @@ export default async function ContactPage() {
   ).filter((entry): entry is [keyof SocialLinks, string] => Boolean(entry[1]));
 
   return (
-    <Container as="section" width="wide" className="py-section relative">
-      <PaintWash blobs={WASH_PRESETS.whisper} />
-
+    <Container as="section" width="wide" className="py-section">
       <div className="grid gap-16 md:grid-cols-2">
         <div>
           <Reveal>

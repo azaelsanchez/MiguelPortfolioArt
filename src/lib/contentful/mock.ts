@@ -538,12 +538,12 @@ export const RAW_EXPERIENCE: RawExperience[] = [
       es: [
         "Branding e identidad visual: logotipos, campañas, merchandising y cartelería.",
         "Ilustración digital y tradicional; motion graphics y edición de vídeo.",
-        "Contenido para redes sociales e IA generativa aplicada a producción visual.",
+        "Contenido para redes sociales.",
       ],
       en: [
         "Branding and visual identity: logos, campaigns, merchandising and posters.",
         "Digital and traditional illustration; motion graphics and video editing.",
-        "Social media content and generative AI applied to visual production.",
+        "Social media content.",
       ],
     },
     order: 2,
@@ -662,15 +662,6 @@ export const RAW_SKILLS: RawSkill[] = [
   tool("skl-maya", "Autodesk Maya", 16),
   tool("skl-3dsmax", "3ds Max", 17),
   {
-    id: "skl-ia",
-    name: {
-      es: "IA generativa (imagen y vídeo)",
-      en: "Generative AI (image and video)",
-    },
-    type: "tool",
-    order: 18,
-  },
-  {
     id: "skl-espanol",
     name: { es: "Español", en: "Spanish" },
     type: "language",
@@ -702,8 +693,8 @@ export const RAW_SITE_SETTINGS = {
     en: "PhD in Fine Arts · Designer and creative educator",
   },
   bioShort: {
-    es: "Diseñador gráfico, ilustrador y creador audiovisual con sólida formación académica y más de 8 años de experiencia. Especializado en branding, identidad visual, ilustración, motion graphics y docencia universitaria. Combino visión artística, dominio técnico e IA generativa para ofrecer resultados de alto impacto en entornos creativos, educativos y culturales.",
-    en: "Graphic designer, illustrator and audiovisual creator with a solid academic background and more than 8 years of experience. Specialised in branding, visual identity, illustration, motion graphics and university teaching. I combine artistic vision, technical craft and generative AI to deliver high-impact results in creative, educational and cultural settings.",
+    es: "Diseñador gráfico, ilustrador y creador audiovisual con sólida formación académica y más de 8 años de experiencia. Especializado en branding, identidad visual, ilustración, motion graphics y docencia universitaria. Combino visión artística y dominio técnico para ofrecer resultados de alto impacto en entornos creativos, educativos y culturales.",
+    en: "Graphic designer, illustrator and audiovisual creator with a solid academic background and more than 8 years of experience. Specialised in branding, visual identity, illustration, motion graphics and university teaching. I combine artistic vision and technical craft to deliver high-impact results in creative, educational and cultural settings.",
   },
   // TODO(azael): validar con Miguel la bio larga en ES y EN.
   bioLong: {

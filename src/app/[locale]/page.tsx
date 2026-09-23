@@ -3,7 +3,6 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/lib/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { buttonClasses } from "@/components/ui/Button";
-import { PaintWash, WASH_PRESETS } from "@/components/ui/PaintWash";
 import { Reveal } from "@/components/ui/Reveal";
 import { FeaturedWorks } from "@/components/home/FeaturedWorks";
 import { getFeaturedProjects, getSiteSettings } from "@/lib/contentful/queries";
@@ -30,10 +29,8 @@ export default async function HomePage() {
     <>
       <Container
         as="section"
-        className="py-section relative flex min-h-[calc(100svh-5rem)] flex-col justify-center"
+        className="py-section flex min-h-[calc(100svh-5rem)] flex-col justify-center"
       >
-        <PaintWash blobs={WASH_PRESETS.hero} />
-
         <Reveal>
           <p className="eyebrow">{settings.tagline}</p>
         </Reveal>

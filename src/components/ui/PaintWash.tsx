@@ -22,6 +22,13 @@ type Blob = {
 type Props = {
   blobs: readonly Blob[];
   className?: string;
+  /**
+   * `fixed`: cubre el viewport entero y no se mueve con el scroll — es lo
+   * que usa el layout raíz para que el sitio entero tenga color debajo,
+   * nunca solo un recuadro dentro del `Container`. `absolute`: se ancla al
+   * contenedor con `position: relative` más cercano, para una mancha local.
+   */
+  position?: "fixed" | "absolute";
 };
 
 const COLOR_VAR: Record<WashColor, string> = {
@@ -37,16 +44,14 @@ const COLOR_VAR: Record<WashColor, string> = {
  * solo `border-radius` asimétrico + `blur`, para que retocar el color en
  * modo oscuro sea cambiar los tokens `--color-wash-*` de `globals.css`, no
  * este componente.
- *
- * El contenedor que la usa necesita `position: relative` y, si tiene
- * contenido encima, `z-index` en ese contenido (la mancha ya lleva `-z-10`).
  */
-export function PaintWash({ blobs, className }: Props) {
+export function PaintWash({ blobs, className, position = "fixed" }: Props) {
   return (
     <div
       aria-hidden
       className={cn(
-        "pointer-events-none absolute inset-0 -z-10 overflow-hidden",
+        "pointer-events-none inset-0 -z-10 overflow-hidden",
+        position === "fixed" ? "fixed" : "absolute",
         className,
       )}
     >
@@ -75,63 +80,64 @@ export function PaintWash({ blobs, className }: Props) {
   );
 }
 
-/** Composiciones reutilizables, pensadas para no repetir números mágicos. */
-export const WASH_PRESETS = {
-  hero: [
-    {
-      color: "violet",
-      size: "42vw",
-      top: "-12%",
-      left: "-8%",
-      radius: "63% 37% 54% 46% / 55% 48% 52% 45%",
-      opacity: 0.22,
-      blur: "90px",
-      duration: 26,
-    },
-    {
-      color: "ochre",
-      size: "30vw",
-      top: "8%",
-      right: "-6%",
-      radius: "37% 63% 56% 44% / 49% 42% 58% 51%",
-      opacity: 0.18,
-      blur: "80px",
-      duration: 30,
-      delay: 3,
-    },
-    {
-      color: "rose",
-      size: "26vw",
-      bottom: "-10%",
-      left: "22%",
-      radius: "50% 50% 34% 66% / 62% 38% 62% 38%",
-      opacity: 0.16,
-      blur: "70px",
-      duration: 22,
-      delay: 6,
-    },
-  ],
-  whisper: [
-    {
-      color: "teal",
-      size: "26vw",
-      top: "-14%",
-      right: "-10%",
-      radius: "42% 58% 68% 32% / 45% 65% 35% 55%",
-      opacity: 0.12,
-      blur: "90px",
-      duration: 28,
-    },
-    {
-      color: "violet",
-      size: "20vw",
-      bottom: "-16%",
-      left: "-8%",
-      radius: "63% 37% 54% 46% / 55% 48% 52% 45%",
-      opacity: 0.1,
-      blur: "80px",
-      duration: 24,
-      delay: 4,
-    },
-  ],
-} as const satisfies Record<string, readonly Blob[]>;
+/**
+ * Backdrop único para todo el sitio (ver `position: "fixed"`): manchas
+ * grandes y bien repartidas por el viewport para que el color se note en
+ * cualquier página, no solo en un hero. Se monta una vez en el layout raíz.
+ */
+export const SITE_WASH: readonly Blob[] = [
+  {
+    color: "violet",
+    size: "55vw",
+    top: "-18vh",
+    left: "-15vw",
+    radius: "63% 37% 54% 46% / 55% 48% 52% 45%",
+    opacity: 0.42,
+    blur: "90px",
+    duration: 32,
+  },
+  {
+    color: "ochre",
+    size: "42vw",
+    top: "-6vh",
+    right: "-14vw",
+    radius: "37% 63% 56% 44% / 49% 42% 58% 51%",
+    opacity: 0.4,
+    blur: "85px",
+    duration: 36,
+    delay: 4,
+  },
+  {
+    color: "rose",
+    size: "46vw",
+    top: "42vh",
+    left: "18vw",
+    radius: "50% 50% 34% 66% / 62% 38% 62% 38%",
+    opacity: 0.34,
+    blur: "100px",
+    duration: 28,
+    delay: 8,
+  },
+  {
+    color: "teal",
+    size: "48vw",
+    bottom: "-16vh",
+    right: "-12vw",
+    radius: "42% 58% 68% 32% / 45% 65% 35% 55%",
+    opacity: 0.4,
+    blur: "95px",
+    duration: 34,
+    delay: 2,
+  },
+  {
+    color: "violet",
+    size: "34vw",
+    bottom: "6vh",
+    left: "-10vw",
+    radius: "58% 42% 45% 55% / 40% 55% 45% 60%",
+    opacity: 0.3,
+    blur: "80px",
+    duration: 26,
+    delay: 10,
+  },
+];

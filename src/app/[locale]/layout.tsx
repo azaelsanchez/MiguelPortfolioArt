@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
+import { PaintWash, SITE_WASH } from "@/components/ui/PaintWash";
 import { MotionProvider } from "@/components/ui/MotionProvider";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -83,6 +84,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <MotionProvider>
             <SmoothScroll />
+            <PaintWash blobs={SITE_WASH} />
             <GrainOverlay />
             <a
               href="#main"

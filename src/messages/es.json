@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "siteName": "Miguel Ángel Gómez Balbuena",
+    "defaultDescription": "Portfolio de Miguel Ángel Gómez Balbuena, Doctor en Bellas Artes: ilustración, animación, diseño gráfico y obra plástica."
+  },
+  "nav": {
+    "home": "Inicio",
+    "work": "Obra",
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "skipToContent": "Saltar al contenido"
+  },
+  "locale": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English",
+    "esShort": "ES",
+    "enShort": "EN"
+  },
+  "home": {
+    "scrollHint": "Desliza",
+    "featuredTitle": "Trabajos destacados",
+    "featuredSubtitle": "Una selección de proyectos recientes.",
+    "ctaWork": "Ver toda la obra",
+    "ctaContact": "Hablemos"
+  },
+  "work": {
+    "title": "Obra",
+    "subtitle": "Ilustración, animación, diseño gráfico, fotografía y obra plástica.",
+    "allCategories": "Todo",
+    "empty": "No hay proyectos en esta categoría.",
+    "viewProject": "Ver proyecto"
+  },
+  "project": {
+    "year": "Año",
+    "technique": "Técnica",
+    "dimensions": "Dimensiones",
+    "categories": "Categorías",
+    "gallery": "Galería",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "backToWork": "Volver a la obra",
+    "closeLightbox": "Cerrar",
+    "previousImage": "Imagen anterior",
+    "nextImage": "Imagen siguiente"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "readMore": "Leer más",
+    "readLess": "Leer menos",
+    "experience": "Experiencia",
+    "education": "Formación",
+    "exhibitions": "Exposiciones",
+    "skills": "Habilidades",
+    "specialties": "Especialidades",
+    "tools": "Herramientas",
+    "languages": "Idiomas",
+    "downloadCv": "Descargar CV",
+    "present": "Actualidad",
+    "solo": "Individual",
+    "group": "Colectiva",
+    "allExhibitions": "Todas"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "¿Tienes un proyecto en mente? Escríbeme.",
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "send": "Enviar",
+    "sending": "Enviando…",
+    "success": "Mensaje enviado. Te responderé lo antes posible.",
+    "error": "No se ha podido enviar el mensaje. Inténtalo de nuevo.",
+    "followMe": "Sígueme"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "Esta página se ha desvanecido como un sueño al despertar.",
+    "backHome": "Volver al inicio"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "devCredit": "Diseño y desarrollo"
+  }
+}

@@ -1,7 +1,25 @@
+import createNextIntlPlugin from "next-intl/plugin";
 import type { NextConfig } from "next";
 
+const withNextIntl = createNextIntlPlugin({
+  requestConfig: "./src/lib/i18n/request.ts",
+});
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  typedRoutes: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.ctfassets.net",
+      },
+      // TODO(azael): retirar cuando la migración desde Wix haya terminado.
+      {
+        protocol: "https",
+        hostname: "static.wixstatic.com",
+      },
+    ],
+  },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

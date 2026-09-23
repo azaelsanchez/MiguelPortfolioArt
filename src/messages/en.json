@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "siteName": "Miguel Ángel Gómez Balbuena",
+    "defaultDescription": "Portfolio of Miguel Ángel Gómez Balbuena, PhD in Fine Arts: illustration, animation, graphic design and studio work."
+  },
+  "nav": {
+    "home": "Home",
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "skipToContent": "Skip to content"
+  },
+  "locale": {
+    "label": "Language",
+    "es": "Español",
+    "en": "English",
+    "esShort": "ES",
+    "enShort": "EN"
+  },
+  "home": {
+    "scrollHint": "Scroll",
+    "featuredTitle": "Featured work",
+    "featuredSubtitle": "A selection of recent projects.",
+    "ctaWork": "See all work",
+    "ctaContact": "Get in touch"
+  },
+  "work": {
+    "title": "Work",
+    "subtitle": "Illustration, animation, graphic design, photography and studio work.",
+    "allCategories": "All",
+    "empty": "No projects in this category.",
+    "viewProject": "View project"
+  },
+  "project": {
+    "year": "Year",
+    "technique": "Technique",
+    "dimensions": "Dimensions",
+    "categories": "Categories",
+    "gallery": "Gallery",
+    "previous": "Previous",
+    "next": "Next",
+    "backToWork": "Back to work",
+    "closeLightbox": "Close",
+    "previousImage": "Previous image",
+    "nextImage": "Next image"
+  },
+  "about": {
+    "title": "About",
+    "readMore": "Read more",
+    "readLess": "Read less",
+    "experience": "Experience",
+    "education": "Education",
+    "exhibitions": "Exhibitions",
+    "skills": "Skills",
+    "specialties": "Specialties",
+    "tools": "Tools",
+    "languages": "Languages",
+    "downloadCv": "Download CV",
+    "present": "Present",
+    "solo": "Solo",
+    "group": "Group",
+    "allExhibitions": "All"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Got a project in mind? Drop me a line.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending…",
+    "success": "Message sent. I'll get back to you as soon as I can.",
+    "error": "The message could not be sent. Please try again.",
+    "followMe": "Follow me"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "This page has faded away like a dream at daybreak.",
+    "backHome": "Back home"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "devCredit": "Design and development"
+  }
+}

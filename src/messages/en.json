@@ -44,7 +44,10 @@
     "backToWork": "Back to work",
     "closeLightbox": "Close",
     "previousImage": "Previous image",
-    "nextImage": "Next image"
+    "nextImage": "Next image",
+    "previousProject": "Previous project",
+    "nextProject": "Next project",
+    "viewFullPage": "View full page"
   },
   "about": {
     "title": "About",

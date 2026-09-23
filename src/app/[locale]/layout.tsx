@@ -53,6 +53,7 @@ export async function generateMetadata(
 
 export default async function LocaleLayout({
   children,
+  modal,
   params,
 }: LayoutProps<"/[locale]">) {
   const { locale } = await params;
@@ -97,6 +98,7 @@ export default async function LocaleLayout({
               {children}
             </main>
             <Footer />
+            {modal}
           </MotionProvider>
         </NextIntlClientProvider>
         <Analytics />

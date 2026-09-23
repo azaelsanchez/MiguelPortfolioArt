@@ -44,7 +44,10 @@
     "backToWork": "Volver a la obra",
     "closeLightbox": "Cerrar",
     "previousImage": "Imagen anterior",
-    "nextImage": "Imagen siguiente"
+    "nextImage": "Imagen siguiente",
+    "previousProject": "Proyecto anterior",
+    "nextProject": "Siguiente proyecto",
+    "viewFullPage": "Ver ficha completa"
   },
   "about": {
     "title": "Sobre mí",

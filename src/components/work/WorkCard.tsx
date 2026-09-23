@@ -1,33 +1,50 @@
 import Image from "next/image";
 import { Link } from "@/lib/i18n/navigation";
+import { cn } from "@/lib/cn";
 import type { Project } from "@/lib/contentful/types";
 
 type Props = {
   project: Project;
-  /** Ancho de renderizado aproximado, para pedirle a `next/image` el tamaño correcto. */
   sizes?: string;
   priority?: boolean;
+  /**
+   * Clase de proporción fija (p. ej. `"aspect-[4/5]"`) para recortar la
+   * portada con `object-cover`, como en la rejilla uniforme de Home. Sin
+   * esto, la imagen mantiene su proporción real y decide la altura de la
+   * tarjeta (rejilla masonry de `/work`).
+   */
+  aspect?: string;
 };
 
 export function WorkCard({
   project,
   sizes = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw",
   priority = false,
+  aspect,
 }: Props) {
   return (
     <Link
       href={`/work/${project.slug}`}
-      className="group mb-8 block break-inside-avoid"
+      className={cn("group block", !aspect && "mb-8 break-inside-avoid")}
     >
-      <div className="bg-canvas-sunken overflow-hidden">
+      <div
+        className={cn(
+          "bg-canvas-sunken overflow-hidden",
+          aspect ? cn("relative w-full", aspect) : undefined,
+        )}
+      >
         <Image
           src={project.coverImage.url}
           alt={project.coverImage.alt}
-          width={project.coverImage.width}
-          height={project.coverImage.height}
+          width={aspect ? undefined : project.coverImage.width}
+          height={aspect ? undefined : project.coverImage.height}
+          fill={Boolean(aspect)}
           sizes={sizes}
           priority={priority}
-          className="h-auto w-full transition-transform duration-700 ease-(--ease-out-soft) group-hover:scale-[1.02]"
+          className={cn(
+            "transition-transform duration-700 ease-(--ease-out-soft) group-hover:scale-[1.02]",
+            aspect ? "object-cover" : "h-auto w-full",
+          )}
         />
       </div>
       <div className="mt-3 flex items-baseline justify-between gap-4">

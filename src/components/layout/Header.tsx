@@ -6,8 +6,14 @@ import { Link, usePathname } from "@/lib/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { NAV_ITEMS } from "@/lib/nav";
 import { cn } from "@/lib/cn";
+import type { SocialLinks } from "@/lib/contentful/types";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { MobileMenu } from "./MobileMenu";
+import { SocialIconLinks } from "./SocialIconLinks";
+
+type Props = {
+  socialLinks: SocialLinks;
+};
 
 /**
  * Fija y siempre visible: con Home funcionando como una mini-SPA (secciones
@@ -15,7 +21,7 @@ import { MobileMenu } from "./MobileMenu";
  * subir para volver a navegar. Solo cambia de fondo — transparente arriba
  * del todo, papel + blur al bajar — para no competir con el hero.
  */
-export function Header() {
+export function Header({ socialLinks }: Props) {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -39,9 +45,9 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-500 ease-(--ease-out-soft)",
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ease-(--ease-out-soft)",
           scrolled && !menuOpen
-            ? "border-line bg-canvas/85 border-b backdrop-blur-md"
+            ? "border-line/60 bg-canvas/45 border-b backdrop-blur-lg"
             : "border-b border-transparent",
         )}
       >
@@ -77,7 +83,15 @@ export function Header() {
               </ul>
             </nav>
 
-            <LocaleSwitcher className="hidden md:flex" />
+            <div className="hidden items-center gap-6 md:flex">
+              <span aria-hidden className="bg-line-strong h-4 w-px" />
+              <SocialIconLinks
+                socialLinks={socialLinks}
+                className="flex items-center gap-4"
+              />
+              <span aria-hidden className="bg-line-strong h-4 w-px" />
+              <LocaleSwitcher />
+            </div>
 
             <button
               type="button"
@@ -108,7 +122,11 @@ export function Header() {
         </Container>
       </header>
 
-      <MobileMenu open={menuOpen} onClose={closeMenu} />
+      <MobileMenu
+        open={menuOpen}
+        onClose={closeMenu}
+        socialLinks={socialLinks}
+      />
     </>
   );
 }

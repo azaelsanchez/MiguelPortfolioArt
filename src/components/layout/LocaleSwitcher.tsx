@@ -9,6 +9,11 @@ type Props = {
   className?: string;
 };
 
+const FLAGS: Record<(typeof locales)[number], string> = {
+  es: "/flags/es.svg",
+  en: "/flags/gb.svg",
+};
+
 export function LocaleSwitcher({ className }: Props) {
   const t = useTranslations("locale");
   const activeLocale = useLocale();
@@ -16,31 +21,28 @@ export function LocaleSwitcher({ className }: Props) {
   const pathname = usePathname();
 
   return (
-    <nav aria-label={t("label")} className={cn("flex items-center", className)}>
-      {locales.map((locale, index) => {
+    <nav aria-label={t("label")} className={cn("flex items-center gap-2.5", className)}>
+      {locales.map((locale) => {
         const isActive = locale === activeLocale;
 
         return (
-          <span key={locale} className="flex items-center">
-            {index > 0 && (
-              <span aria-hidden className="text-ink-subtle px-1.5">
-                /
-              </span>
+          <Link
+            key={locale}
+            href={pathname}
+            locale={locale}
+            hrefLang={locale}
+            aria-current={isActive ? "true" : undefined}
+            className={cn(
+              "block overflow-hidden rounded-[3px] ring-offset-2 ring-offset-canvas transition-all duration-300 ease-(--ease-out-soft)",
+              isActive
+                ? "opacity-100 ring-2 ring-accent"
+                : "opacity-50 grayscale hover:opacity-90 hover:grayscale-0",
             )}
-            <Link
-              href={pathname}
-              locale={locale}
-              hrefLang={locale}
-              aria-current={isActive ? "true" : undefined}
-              className={cn(
-                "text-xs tracking-[0.16em] uppercase transition-colors duration-300 ease-(--ease-out-soft)",
-                isActive ? "text-ink" : "text-ink-subtle hover:text-ink",
-              )}
-            >
-              <span className="sr-only">{t(locale)}</span>
-              <span aria-hidden>{t(`${locale}Short`)}</span>
-            </Link>
-          </span>
+          >
+            <span className="sr-only">{t(locale)}</span>
+            {/* eslint-disable-next-line @next/next/no-img-element -- icono estático de 60×30, no necesita next/image */}
+            <img src={FLAGS[locale]} alt="" aria-hidden className="block h-4 w-[1.6rem] object-cover" />
+          </Link>
         );
       })}
     </nav>

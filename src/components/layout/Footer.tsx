@@ -1,26 +1,14 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { getSiteSettings } from "@/lib/contentful/queries";
-import type { SocialLinks } from "@/lib/contentful/types";
-
-const SOCIAL_LABELS: Record<keyof SocialLinks, string> = {
-  instagram: "Instagram",
-  artstation: "ArtStation",
-  vimeo: "Vimeo",
-  linkedin: "LinkedIn",
-  behance: "Behance",
-};
+import { SOCIAL_LABELS, getActiveSocials } from "@/lib/social";
 
 export async function Footer() {
   const locale = await getLocale();
   const t = await getTranslations("footer");
   const settings = await getSiteSettings(locale);
 
-  const socials = (
-    Object.entries(settings.socialLinks) as Array<
-      [keyof SocialLinks, string | undefined]
-    >
-  ).filter((entry): entry is [keyof SocialLinks, string] => Boolean(entry[1]));
+  const socials = getActiveSocials(settings.socialLinks);
 
   const creditUrl = process.env.NEXT_PUBLIC_DEV_CREDIT_URL;
 

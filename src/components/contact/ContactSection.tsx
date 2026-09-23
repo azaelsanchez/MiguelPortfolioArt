@@ -2,28 +2,17 @@ import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { ContactForm } from "@/components/contact/ContactForm";
-import type { SiteSettings, SocialLinks } from "@/lib/contentful/types";
+import { SOCIAL_LABELS, getActiveSocials } from "@/lib/social";
+import type { SiteSettings } from "@/lib/contentful/types";
 
 type Props = {
   settings: SiteSettings;
 };
 
-const SOCIAL_LABELS: Record<keyof SocialLinks, string> = {
-  instagram: "Instagram",
-  artstation: "ArtStation",
-  vimeo: "Vimeo",
-  linkedin: "LinkedIn",
-  behance: "Behance",
-};
-
 export async function ContactSection({ settings }: Props) {
   const t = await getTranslations("contact");
 
-  const socials = (
-    Object.entries(settings.socialLinks) as Array<
-      [keyof SocialLinks, string | undefined]
-    >
-  ).filter((entry): entry is [keyof SocialLinks, string] => Boolean(entry[1]));
+  const socials = getActiveSocials(settings.socialLinks);
 
   return (
     <Container

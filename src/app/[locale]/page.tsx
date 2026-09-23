@@ -8,6 +8,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { CategoryFilter } from "@/components/work/CategoryFilter";
 import { WorkGrid } from "@/components/work/WorkGrid";
 import { ContactSection } from "@/components/contact/ContactSection";
+import { Portrait } from "@/components/home/Portrait";
 import {
   getCategories,
   getProjects,
@@ -31,6 +32,7 @@ export default async function HomePage() {
   const t = await getTranslations("home");
   const tWork = await getTranslations("work");
   const tNav = await getTranslations("nav");
+  const tAbout = await getTranslations("about");
   const [settings, projects, categories] = await Promise.all([
     getSiteSettings(locale),
     getProjects(locale),
@@ -41,34 +43,53 @@ export default async function HomePage() {
     <>
       <Container
         as="section"
-        className="py-section flex min-h-[calc(100svh-5rem)] flex-col justify-center"
+        className="py-section grid min-h-[calc(100svh-5rem)] items-center gap-12 md:grid-cols-[1fr_1.3fr] md:gap-16"
       >
-        <Reveal>
-          <p className="eyebrow">{settings.tagline}</p>
+        {/* Foto primero en el DOM: en móvil queda arriba, en escritorio a
+            la izquierda — orden de lectura "primero la cara, luego quién
+            es". */}
+        <Reveal className="mx-auto w-full max-w-sm md:mx-0">
+          <Portrait portrait={settings.portrait} />
         </Reveal>
 
-        <Reveal delay={0.08}>
-          <h1 className="font-display text-hero mt-6 max-w-5xl text-balance">
-            Miguel Ángel Gómez Balbuena
-          </h1>
-        </Reveal>
+        <div>
+          <Reveal>
+            <p className="eyebrow">{settings.tagline}</p>
+          </Reveal>
 
-        <Reveal delay={0.16}>
-          <p className="text-ink-muted mt-8 max-w-2xl text-lg text-pretty">
-            {settings.bioShort}
-          </p>
-        </Reveal>
+          <Reveal delay={0.08}>
+            {/* Más contenido que `text-hero`: a este ancho, con las 4
+                palabras del nombre completo, `text-hero` partía en 3
+                líneas y se comía la columna entera. */}
+            <h1 className="font-display mt-6 text-[clamp(2.25rem,5.2vw,4.25rem)] leading-[0.98] tracking-[-0.02em] text-balance">
+              Miguel Ángel Gómez Balbuena
+            </h1>
+          </Reveal>
 
-        <Reveal delay={0.24}>
-          <div className="mt-12 flex flex-wrap gap-4">
-            <Link href="/#work" className={buttonClasses("solid")}>
-              {t("ctaWork")}
-            </Link>
-            <Link href="/#contact" className={buttonClasses("solid")}>
-              {tNav("contact")}
-            </Link>
-          </div>
-        </Reveal>
+          <Reveal delay={0.16}>
+            <p className="text-ink-muted mt-6 max-w-xl text-lg text-pretty">
+              {settings.bioShort}
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.24}>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link href="/#work" className={buttonClasses("solid")}>
+                {t("ctaWork")}
+              </Link>
+              <Link href="/#contact" className={buttonClasses("solid")}>
+                {tNav("contact")}
+              </Link>
+              <a
+                href={settings.cvFileUrl}
+                download
+                className={buttonClasses("outline")}
+              >
+                {tAbout("downloadCv")}
+              </a>
+            </div>
+          </Reveal>
+        </div>
       </Container>
 
       <Container

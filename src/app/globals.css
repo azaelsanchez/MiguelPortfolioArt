@@ -11,16 +11,20 @@
   --color-canvas-raised: #ffffff;
   --color-canvas-sunken: #ece2d1;
   --color-ink: #17150f;
-  --color-ink-muted: #6a6459;
-  --color-ink-subtle: #9c958b;
+  /* Antes 5.17:1 / 2.61:1 sobre `canvas` — el segundo no llegaba ni al AA
+     (4.5:1); se notaba como texto casi invisible. Ahora 8.44:1 / 4.90:1. */
+  --color-ink-muted: #4a4536;
+  --color-ink-subtle: #6e6857;
   --color-line: #ddd2bd;
   --color-line-strong: #c7b89e;
   --color-accent: #5c4b78;
   --color-accent-soft: #ece7f2;
 
-  /* Feedback (formulario). Tomados de la propia paleta de manchas: nada de rojo/verde de alarma. */
-  --color-success: #4f7f79;
-  --color-error: #a35b4a;
+  /* Feedback (formulario). Tomados de la propia paleta de manchas: nada de
+     rojo/verde de alarma. Oscurecidos un poco (3.99:1 / 4.46:1 no llegaban
+     al AA de texto normal) a 6.20:1 / 6.37:1. */
+  --color-success: #386059;
+  --color-error: #86452f;
 
   /*
    * Paleta de "manchas" — usada solo por `<PaintWash>` para llenar el

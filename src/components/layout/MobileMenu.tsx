@@ -4,14 +4,17 @@ import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { NAV_ITEMS } from "@/lib/nav";
+import type { SocialLinks } from "@/lib/contentful/types";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { SocialIconLinks } from "./SocialIconLinks";
 
 type Props = {
   open: boolean;
   onClose: () => void;
+  socialLinks: SocialLinks;
 };
 
-export function MobileMenu({ open, onClose }: Props) {
+export function MobileMenu({ open, onClose, socialLinks }: Props) {
   const t = useTranslations("nav");
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -64,6 +67,10 @@ export function MobileMenu({ open, onClose }: Props) {
         </nav>
       </div>
       <div className="border-line flex items-center justify-between border-t px-6 py-6">
+        <SocialIconLinks
+          socialLinks={socialLinks}
+          className="flex items-center gap-5"
+        />
         <LocaleSwitcher />
       </div>
     </div>

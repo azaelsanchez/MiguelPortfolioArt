@@ -724,17 +724,28 @@ export const RAW_SITE_SETTINGS = {
     es: "Detalle de una obra de Miguel Ángel Gómez Balbuena",
     en: "Detail of a work by Miguel Ángel Gómez Balbuena",
   }),
-  portrait: placeholder("portrait", 1200, 1500, {
-    es: "Retrato de Miguel Ángel Gómez Balbuena",
-    en: "Portrait of Miguel Ángel Gómez Balbuena",
-  }),
+  // Retrato real, migrado desde la web de Wix (antes placeholder).
+  portrait: {
+    url: "/profile/portrait.jpg",
+    width: 2480,
+    height: 3393,
+    alt: {
+      es: "Retrato de Miguel Ángel Gómez Balbuena",
+      en: "Portrait of Miguel Ángel Gómez Balbuena",
+    },
+  },
   tagline: {
     es: "Doctor en Bellas Artes · Diseñador y docente creativo",
     en: "PhD in Fine Arts · Designer and creative educator",
   },
+  // TODO(azael): validar con Miguel — el texto original sonaba a plantilla
+  // de LinkedIn ("sólida formación académica", "entornos creativos,
+  // educativos y culturales"); esto es más corto y con más voz propia,
+  // pensado para leerse en la tarjeta que gira de Home, no como un
+  // párrafo de currículum.
   bioShort: {
-    es: "Diseñador gráfico, ilustrador y creador audiovisual con sólida formación académica y más de 8 años de experiencia. Especializado en branding, identidad visual, ilustración, motion graphics y docencia universitaria. Combino visión artística y dominio técnico para ofrecer resultados de alto impacto en entornos creativos, educativos y culturales.",
-    en: "Graphic designer, illustrator and audiovisual creator with a solid academic background and more than 8 years of experience. Specialised in branding, visual identity, illustration, motion graphics and university teaching. I combine artistic vision and technical craft to deliver high-impact results in creative, educational and cultural settings.",
+    es: "Diseñador gráfico, ilustrador y creador audiovisual. Llevo más de ocho años dando forma a marcas, personajes y mundos imaginarios — entre el estudio y el aula, sin soltar nunca el lápiz.",
+    en: "Graphic designer, illustrator and audiovisual creator. For more than eight years I've been shaping brands, characters and imagined worlds — between the studio and the classroom, pencil always in hand.",
   },
   // TODO(azael): validar con Miguel la bio larga en ES y EN.
   bioLong: {

@@ -21,9 +21,7 @@
   },
   "home": {
     "scrollHint": "Scroll",
-    "featuredTitle": "Featured work",
-    "featuredSubtitle": "A selection of recent projects.",
-    "ctaWork": "See all work",
+    "ctaWork": "See the work",
     "ctaContact": "Get in touch"
   },
   "work": {
@@ -31,7 +29,8 @@
     "subtitle": "Illustration, animation, graphic design, photography and studio work.",
     "allCategories": "All",
     "empty": "No projects in this category.",
-    "viewProject": "View project"
+    "viewProject": "View project",
+    "showMore": "Show more"
   },
   "project": {
     "year": "Year",

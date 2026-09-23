@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/lib/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { buttonClasses } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { FeaturedWorks } from "@/components/home/FeaturedWorks";
-import { getFeaturedProjects, getSiteSettings } from "@/lib/contentful/queries";
+import { CategoryFilter } from "@/components/work/CategoryFilter";
+import { WorkGrid } from "@/components/work/WorkGrid";
+import {
+  getCategories,
+  getProjects,
+  getSiteSettings,
+} from "@/lib/contentful/queries";
 import { toLocale } from "@/lib/i18n/routing";
 import { buildAlternates } from "@/lib/seo";
+
+/** Filas de 3 en escritorio antes de necesitar "Mostrar más". */
+const INITIAL_VISIBLE = 9;
 
 export async function generateMetadata(
   props: PageProps<"/[locale]">,
@@ -19,10 +28,12 @@ export async function generateMetadata(
 export default async function HomePage() {
   const locale = await getLocale();
   const t = await getTranslations("home");
+  const tWork = await getTranslations("work");
   const tNav = await getTranslations("nav");
-  const [settings, featured] = await Promise.all([
+  const [settings, projects, categories] = await Promise.all([
     getSiteSettings(locale),
-    getFeaturedProjects(locale),
+    getProjects(locale),
+    getCategories(locale),
   ]);
 
   return (
@@ -49,7 +60,7 @@ export default async function HomePage() {
 
         <Reveal delay={0.24}>
           <div className="mt-12 flex flex-wrap gap-4">
-            <Link href="/work" className={buttonClasses("solid")}>
+            <Link href="/#work" className={buttonClasses("solid")}>
               {t("ctaWork")}
             </Link>
             <Link href="/contact" className={buttonClasses("solid")}>
@@ -59,8 +70,26 @@ export default async function HomePage() {
         </Reveal>
       </Container>
 
-      <Container as="div" width="wide">
-        <FeaturedWorks projects={featured} />
+      <Container
+        id="work"
+        as="section"
+        width="wide"
+        className="py-section scroll-mt-20"
+      >
+        <Reveal>
+          <h2 className="font-display text-title">{tWork("title")}</h2>
+          <p className="text-ink-muted mt-4 max-w-xl">{tWork("subtitle")}</p>
+        </Reveal>
+
+        {/* `CategoryFilter` y `WorkGrid` leen `useSearchParams`, que exige un
+            límite de Suspense para no forzar el renderizado dinámico de toda
+            la página. */}
+        <Suspense>
+          <div className="mt-10">
+            <CategoryFilter categories={categories} />
+          </div>
+          <WorkGrid projects={projects} initialCount={INITIAL_VISIBLE} />
+        </Suspense>
       </Container>
     </>
   );

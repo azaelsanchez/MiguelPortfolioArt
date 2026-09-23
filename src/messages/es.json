@@ -21,9 +21,7 @@
   },
   "home": {
     "scrollHint": "Desliza",
-    "featuredTitle": "Trabajos destacados",
-    "featuredSubtitle": "Una selección de proyectos recientes.",
-    "ctaWork": "Ver toda la obra",
+    "ctaWork": "Ver la obra",
     "ctaContact": "Hablemos"
   },
   "work": {
@@ -31,7 +29,8 @@
     "subtitle": "Ilustración, animación, diseño gráfico, fotografía y obra plástica.",
     "allCategories": "Todo",
     "empty": "No hay proyectos en esta categoría.",
-    "viewProject": "Ver proyecto"
+    "viewProject": "Ver proyecto",
+    "showMore": "Mostrar más"
   },
   "project": {
     "year": "Año",

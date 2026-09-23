@@ -7,6 +7,7 @@ type Props = {
   /** `wide` para rejillas de obra, `narrow` para texto largo. */
   width?: "default" | "wide" | "narrow";
   className?: string;
+  id?: string;
 };
 
 const WIDTHS = {
@@ -20,9 +21,11 @@ export function Container({
   as: Component = "div",
   width = "default",
   className,
+  id,
 }: Props) {
   return (
     <Component
+      id={id}
       className={cn("mx-auto w-full px-6 md:px-10", WIDTHS[width], className)}
     >
       {children}

@@ -3,7 +3,8 @@ import { locales } from "@/lib/i18n/routing";
 import { getSiteUrl } from "@/lib/seo";
 import { getProjectSlugs } from "@/lib/contentful/queries";
 
-const STATIC_PATHS = ["", "/work", "/about", "/contact"];
+// "/work" no está: es una redirección a "/#work", no una página con contenido propio.
+const STATIC_PATHS = ["", "/about", "/contact"];
 
 function localizedUrl(path: string, locale: string): string {
   return `${getSiteUrl()}/${locale}${path}`;

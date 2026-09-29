@@ -4,8 +4,6 @@ Portfolio bilingüe (ES/EN) de Miguel Ángel Gómez Balbuena, Doctor en Bellas
 Artes, diseñador gráfico, ilustrador y creador audiovisual. Sustituye a la web
 de Wix de 2021.
 
-El plan de desarrollo completo está en [`PLAN.md`](./PLAN.md).
-
 ## Stack
 
 - **Next.js 16** (App Router) + React 19 + TypeScript estricto
@@ -71,7 +69,7 @@ src/
 scripts/
   generate-mock-images.mjs  placeholders de `public/mock/`
   contentful/
-    migrate.js               modelo de contenido (sección 3 del PLAN)
+    migrate.js               modelo de contenido
     seed.ts                  siembra el inventario de `lib/contentful/mock.ts`
 ```
 
@@ -89,7 +87,7 @@ en modo oscuro sin tocar el componente.
 
 `src/lib/contentful/queries.ts` es la única fachada que usan las páginas.
 Sin `CONTENTFUL_SPACE_ID` resuelve todo contra `src/lib/contentful/mock.ts`
-(reproduce el inventario de la sección 4 del PLAN: proyectos, exposiciones,
+(reproduce el inventario de contenido: proyectos, exposiciones,
 formación, experiencia y habilidades). Con credenciales, habla con la
 Delivery/Preview API a través de `client.ts` y pasa la respuesta por
 `mappers.ts`. Los componentes solo ven los tipos de dominio de `types.ts`, así
